@@ -1,5 +1,4 @@
 <div class="header">
-    <br>
     <nav>
         <h2 style="display: inline; padding-right: 1em;">
             <a href="/" style="text-decoration: none;">
@@ -7,9 +6,12 @@
             </a>
             popax::blog
         </h2>
-        {% for item in site.data.nav %}
-        <a href="{{ item.link }}">{{ item.name }}</a>
-        {% endfor %}
+        <br class="mobile-only" style="margin-top: 24px;">
+        <div style="display: inline-block;">
+            {% for item in site.data.nav %}
+            <a href="{{ item.link }}">{{ item.name }}</a>
+            {% endfor %}
+        </div>
     </nav>
     <hr>
 </div>

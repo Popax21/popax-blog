@@ -15,42 +15,39 @@ title: 🚧🚧🚧 UNDER_CONSTRUCTION 🚧🚧🚧
 </head>
 
 <body>
-    <div id="backdrop">
-        <span id="txt" style="z-index: -5">v8</span>
-
-        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-            <div id="disclaimer" style="font-size: larger;">
-                <h1>🚧🚧🚧 UNDER_CONSTRUCTION 🚧🚧🚧🚧</h1>
-                <h3>this site is still under construction!</h3>
-                <br>
-                however, some content is already here - be warned tho, as it might be slightly "silly" :)
-                <br>
-                <br>
-                <b>
-                    &gt;&gt; click <a onclick="activate()" style="font-weight: bold; color: purple; cursor: pointer;">HERE</a> to proceed if you feel you are ready &lt;&lt;
-                </b>
-                <br>
-                <small>(sorry if you are on mobile btw, it's probably gonna be broken...)</small>
-                <br>
-                <br>
-                <small>
-                    alternatively, click <a href="/blog" style="font-weight: bold; color: purple; cursor: pointer; text-decoration: none;">HERE</a> to directly skip to the "boring" parts
-                </small>
-                <br>
-            </div>
+    <div id="disclaimer-container" class="fullscreen">
+        <div id="disclaimer">
+            <h1><span class="nowrap">🚧🚧🚧</span> UNDER_CONSTRUCTION <span class="nowrap">🚧🚧🚧</span></h1>
+            <h3>this site is still under construction!</h3>
+            <br>
+            however, some content is already here - be warned tho, as it might be slightly "silly" :)
+            <br>
+            <br>
+            <b>
+                &gt;&gt; click <a onclick="activate()">HERE</a> to proceed if you feel you are ready &lt;&lt;
+            </b>
+            <br>
+            <br>
+            <small>
+                alternatively, click <a href="/blog">HERE</a> to directly skip to the "boring" parts
+            </small>
+            <br>
         </div>
+    </div>
 
+    <div id="panel-container" class="fullscreen">
         <div id="top-panel">
-            <span style="padding-right: 16px;">
+            <span class="nowrap" style="font-size: 4vh;">
                 <img src="/assets/img/dhex-white.svg" style="display: inline-block; height: 1.7em; vertical-align: middle;"/>
                 <strong>Popax21</strong>
             </span>
-            <span style="font-size: smaller;"> - low level programming enthusiast</span>
+            <pre class="tagline"> - </pre>
+            <span class="tagline">low level programming enthusiast</span>
         </div>
 
         <div id="about-panel" class="panel">
+            <div class="mobile-panel-padding" style="height: 16px;"></div>
             <strong>[meta::ABOUT]</strong>
-            <br>
             i do low level software engineering / cybersecurity research / CTFs ^⁻^
             <br>
             <span><small>(might have pwned V8 a few times by now .-.)</small></span>
@@ -62,29 +59,32 @@ title: 🚧🚧🚧 UNDER_CONSTRUCTION 🚧🚧🚧
                 <li>CVE-2025-0291</li>
                 <li>CVE-2025-0995</li>
             </ul>
-            <small>they don't give out CVEs for V8 SBX escapes... <span style="white-space: pre-line;"">:(</span></small>
+            <br style="margin: 0.2em;">
+            <small>they don't give out CVEs for V8 SBX escapes... <span class="nowrap">:(</span></small>
         </div>
         <div id="blog-panel" class="panel">
             <strong>[lnk::BLOG]</strong>
-            <br>
             <a href="/blog">sometimes i post stuff :)</a>
         </div>
         <div id="socials-panel" class="panel">
             <strong>[meta::SOCIALS]</strong>
             <ul>
-                <li><span>Email: contact@<em>&lt;meta::this_domain&gt;</em></span></li>
+                <li><span>Email: contact@<wbr><em>&lt;meta::this_domain&gt;</em></span></li>
                 <li><a href="https://github.com/Popax21">GitHub: Popax21</a></li>
             </ul>
+            <br style="margin: 0.2em;">
             <small>... that's pretty much it; any other accounts with my name should not be assumed to belong to me</small>
+            <div class="mobile-panel-padding" style="height: 2.5vh;"></div>
         </div>
     </div>
 
-    <canvas id="tracers" style="z-index: -40;"></canvas>
-    <canvas id="walkers" style="z-index: -30;"></canvas>
-    <canvas id="waves" style="z-index: -20;"></canvas>
-    <canvas id="cube" style="z-index: -10;"></canvas>
-    <canvas id="confetti" style="z-index: 30;"></canvas>
-    <span id="credits" title="click to toggle!">🎵: microchip by Oliver Buckland (CC BY-NC-SA 3.0)</span>
+    <div id="backdrop" class="fullscreen"><span id="txt" style="z-index: -5">v8</span></div>
+    <canvas id="tracers" class="fullscreen" style="z-index: -40;"></canvas>
+    <canvas id="walkers" class="fullscreen" style="z-index: -30;"></canvas>
+    <canvas id="waves" class="fullscreen" style="z-index: -20;"></canvas>
+    <canvas id="cube" class="fullscreen" style="z-index: -10;"></canvas>
+    <canvas id="confetti" class="fullscreen" style="z-index: 30;"></canvas>
+    <span id="credits" title="click to toggle!">🎵: microchip by Oliver Buckland <small>(CC BY-NC-SA 3.0)</small></span>
 </body>
 
 </html>

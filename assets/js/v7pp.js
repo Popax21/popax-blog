@@ -21,9 +21,6 @@ async function lerp(time, func) {
     func(1);
 }
 
-const POPIN_PANELS = [document.getElementById("top-panel"), ...document.getElementsByClassName("panel")];
-POPIN_PANELS.forEach(p => p.style.scale = 0);
-
 const V8_IMAGE = new Image();
 
 let triggered = false;
@@ -57,38 +54,66 @@ async function activate() {
 
     (async function () {
         let disc = document.getElementById("disclaimer");
-        await lerp(2, l => disc.style.transform = `rotate(${l*100}deg) scale(${Math.pow(1 - l, 2)})`);
-        disc.remove();
+        await lerp(2, l => disc.style.transform = `rotate(${l * 100}deg) scale(${Math.pow(1 - l, 2)})`);
+        disc.parentNode.remove();
         document.title = "popax::landing_page";
-        
+
         await sleep(500);
-        await lerp(0.5, l => POPIN_PANELS.forEach(p => p.style.scale = 1 - Math.pow(1 - l, 3)));
+
+        let pc = document.getElementById("panel-container");
+        pc.style.opacity = 1;
+        await lerp(0.5, l => [...pc.children].forEach(p => p.style.scale = 1 - Math.pow(1 - l, 3)));
 
         let drag = null;
         function dragover(e) {
-            if(drag) {
-                let [p, offx, offy] = drag;
-                p.style.left = `${e.clientX + offx}px`;
-                p.style.top = `${e.clientY + offy}px`;
+            if (drag) {
+                let [p, offx, offy, w, h] = drag;
+                let x = e.clientX + offx, y = e.clientY + offy;
+                if (x < 0) x = 0;
+                if (y < 0) y = 0;
+                if (x + w > window.innerWidth) x = window.innerWidth - w;
+                if (y + h > window.innerHeight) y = window.innerHeight - h;
+                p.style.left = `${x}px`;
+                p.style.top = `${y}px`;
             }
         }
-        document.getElementById("backdrop").ondragover = dragover;
+        pc.ondragover = dragover;
 
         var blimg = document.createElement('img');
         blimg.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
-        for(let p of document.getElementsByClassName("panel")) {
+        let nzi = 110;
+        for (let p of document.getElementsByClassName("panel")) {
+            let r = p.getBoundingClientRect();
+            p.style.left = `${r.left}px`;
+            p.style.top = `${r.top}px`;
             p.ondragover = dragover;
-            
+
             let t = p.getElementsByTagName("strong")[0];
             t.draggable = true;
             t.ondragstart = e => {
+                if (getComputedStyle(p).position != "absolute") {
+                    e.stopPropagation();
+                    return;
+                }
+
                 let r = p.getBoundingClientRect();
-                drag = [p, r.left - e.clientX, r.top - e.clientY];
+                drag = [p, r.x - e.clientX, r.y - e.clientY, r.width, r.height];
+                p.style.zIndex = nzi++;
                 e.dataTransfer.setDragImage(blimg, 0, 0);
             };
             t.ondragend = () => drag = null;
             t.style.cursor = "grab";
+
+            addEventListener("resize", e => {
+                let { x, y, width, height } = p.getBoundingClientRect();
+                if (x < 0) x = 0;
+                if (y < 0) y = 0;
+                if (x + width > window.innerWidth) x = window.innerWidth - width;
+                if (y + height > window.innerHeight) y = window.innerHeight - height;
+                p.style.left = `${x}px`;
+                p.style.top = `${y}px`;
+            });
         }
     })();
     await sleep(1200);
@@ -137,7 +162,7 @@ async function confetti() {
     let pts = [];
     for (let i = 0; i < 500; i++) {
         let a = Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random()) * 0.7;
-        let v = Math.min(window.innerWidth, window.innerHeight) * (0.2 + Math.random() * 0.6);
+        let v = Math.max(window.innerWidth * 0.5, window.innerHeight) * (0.2 + Math.random() * 0.6);
         pts.push({ x: window.innerWidth * 0.5, y: window.innerHeight * 0.525, vx: Math.sin(a) * v, vy: Math.cos(a) * v, a: a, c: Math.random() });
     }
 
@@ -326,6 +351,8 @@ async function tracers() {
     let ts = [];
     let nst = 0;
 
+    let mtl = Math.max(window.innerWidth, window.innerHeight) * 1.2;
+
     let p = 0;
     for await (t of frames()) {
         let dt = t - p;
@@ -372,8 +399,6 @@ async function tracers() {
                 t.vy = -1;
             }
 
-            while (t.p.length > 3) t.p.pop();
-
             ctx.lineWidth = 2;
             ctx.strokeStyle = "#c0c0c0";
             ctx.beginPath();
@@ -383,9 +408,9 @@ async function tracers() {
                 let [x, y] = t.p[i];
                 let l = Math.sqrt((cx - x) * (cx - x) + (cy - y) * (cy - y));
 
-                if (tl + l >= 1000) {
+                if (tl + l >= mtl) {
                     let dx = x - cx, dy = y - cy;
-                    let rl = 1000 - tl;
+                    let rl = mtl - tl;
                     x = cx + dx / l * rl;
                     y = cy + dy / l * rl;
                 }
@@ -394,7 +419,7 @@ async function tracers() {
                 cx = x;
                 cy = y;
                 tl += l;
-                if (tl >= 1000) {
+                if (tl >= mtl) {
                     t.p.splice(i + 1);
                     break;
                 }

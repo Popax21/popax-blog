@@ -1,0 +1,30 @@
+.mobile-only {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .wrapper-main, .wrapper-header, .wrapper-footer {
+        max-width: calc(100vw - 2em);
+    }
+
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+
+    .header {
+        padding-top: 16px !important;
+    }
+    .header nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-text {
+        float: left !important;
+    }
+}
