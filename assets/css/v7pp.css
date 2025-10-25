@@ -151,30 +151,6 @@ canvas {
     display: none;
 }
 
-#about-panel {
-    left: 65%;
-    top: 30%;
-    width: 28em;
-}
-
-#cve-panel {
-    left: 70%;
-    top: 60%;
-    width: 16em;
-}
-
-#blog-panel {
-    left: 10%;
-    top: 40%;
-    width: 20em;
-}
-
-#socials-panel {
-    left: 5%;
-    top: 65%;
-    width: 28em;
-}
-
 @media only screen and (max-width: 64em) {
     #disclaimer {
         font-size: 1em;
