@@ -7,8 +7,8 @@ timezone_short: CET
 theme: lightspeed
 plugins:
  - jekyll-feed
- - jekyll-seo-tag
  - jekyll-paginate-v2
+ - jekyll-seo-tag
 
 collections:
   posts:
