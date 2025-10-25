@@ -1,0 +1,11 @@
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+{% seo %}
+{% if site.keywords or page.tags %}
+    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ','}}{% else %}{{ site.keywords | join: ',' }}{% endif %}" />
+{% endif %}
+
+<link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/dhex-black.svg" />
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/img/dhex-black.svg"/>

@@ -1,0 +1,130 @@
+body {
+    font-family: Hack, monospace;
+    background-color: #181818;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+small {
+    font-size: small;
+}
+
+#backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+#txt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    color: violet;
+    font-size: 10vh;
+    font-weight: 800;
+}
+
+#credits {
+    display: none;
+
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -150%);
+
+    color: white;
+    text-align: center;
+    font-size: 1.5vh;
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+#top-panel {
+    position: absolute;
+    left: 25%;
+    top: 32px;
+    width: 50%;
+    height: 10%;
+    padding: 16px;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+}
+
+.panel {
+    position: absolute;
+    padding: 16px;
+    padding-left: 32px;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    text-align: left;
+    font-size: 2.5vh;
+}
+
+.panel a {
+    text-align: left;
+    text-decoration: underline;
+    color: #80ffff;
+}
+
+.panel strong {
+    transform: translateX(-16px);
+    display: inline-block;
+    height: 2em;
+}
+
+.panel ul {
+    list-style-type: '- ';
+}
+
+#about-panel {
+    left: 65%;
+    top: 30%;
+    width: 25%;
+    height: 20%;
+}
+#cve-panel {
+    left: 70%;
+    top: 60%;
+    width: 15%;
+    height: 20%;
+}
+#blog-panel {
+    left: 10%;
+    top: 40%;
+    width: 20%;
+    height: 10%;
+}
+#socials-panel {
+    left: 5%;
+    top: 65%;
+    width: 30%;
+    height: 20%;
+}
