@@ -19,7 +19,7 @@ body {
 }
 
 small {
-    font-size: small;
+    font-size: 0.6em;
 }
 
 canvas {
@@ -122,13 +122,18 @@ canvas {
     justify-content: left;
     align-items: start;
     text-align: left;
-    font-size: large;
+    font-size: 1.2rem;
 }
 
 .panel strong {
     transform: translateX(-16px);
     display: inline-block;
+    font-size: 1.2em;
     height: 2em;
+}
+
+.panel br {
+    margin: 0.3em;
 }
 
 .panel a {
@@ -149,7 +154,7 @@ canvas {
 #about-panel {
     left: 65%;
     top: 30%;
-    width: 16em;
+    width: 28em;
 }
 
 #cve-panel {
@@ -198,6 +203,11 @@ canvas {
         left: 0% !important;
         width: 100% !important;
         padding-top: 0 !important;
+        padding-bottom: 24px !important;
+    }
+
+    .panel strong {
+        height: 1.5em !important;
     }
 
     .mobile-panel-padding {
@@ -214,7 +224,7 @@ canvas {
         font-size: small;
     }
 
-    #credits small {
+    #credits .license {
         display: none;
     }
 }
