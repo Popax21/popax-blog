@@ -1,0 +1,6 @@
+- name: Home
+  link: /
+- name: Posts
+  link: /blog/
+- name: Categories
+  link: /blog/categories.html

@@ -1,0 +1,9 @@
+---
+layout: default
+pagination:
+  enabled: true
+---
+{% capture post_list_title %}
+Posts in cat::<b>{{ page.autopage.display_name }}</b>
+{% endcapture %}
+{% include post_listing.html %}

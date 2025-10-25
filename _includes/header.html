@@ -1,0 +1,15 @@
+<div class="header">
+    <br>
+    <nav>
+        <h2 style="display: inline; padding-right: 1em;">
+            <a href="/" style="text-decoration: none;">
+                <img src="/assets/img/dhex-white.svg" style="display: inline-block; height: 2.5em; vertical-align: middle; padding-right: 10px;"/>
+            </a>
+            popax::blog
+        </h2>
+        {% for item in site.data.nav %}
+        <a href="{{ item.link }}">{{ item.name }}</a>
+        {% endfor %}
+    </nav>
+    <hr>
+</div>

@@ -1,0 +1,23 @@
+---
+layout: default
+title: Blog Categories
+---
+
+<h2>Categories</h2>
+{% for category in site.categories %}
+    <h3 class="category-header" style="font-weight: normal">
+        &gt;&gt; cat::<b>{{ category[0] }}</b>
+    </h3>
+
+    {% for post in category[1] limit:3 %}
+        <span class="post-item">{{ post.date | date: '%Y-%m-%d' }} >> <a href="{{ post.url }}">{{ post.title }}</a></span>
+    {% endfor %}
+
+    <div class="category-all-nav"><h4><em>
+        see all posts in cat::{{ category[0] }} ({{ category[1] | size }}) <a href="/blog/cat/{{ category[0] }}/">&gt;&gt;</a>
+    </em></h4></div>
+
+    {% unless forloop.last %}
+        <br>
+    {% endunless %}
+{% endfor %}

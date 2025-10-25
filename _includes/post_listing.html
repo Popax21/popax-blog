@@ -1,0 +1,26 @@
+<h2>{{ post_list_title }}</h2>
+
+{% for post in paginator.posts %}
+<span class="post-item">
+    <span class="mobile-hide"> {{ post.date | date: '%Y-%m-%d' }} >> </span>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    <span class="float-right mobile-hide">
+        {% if post.categories.size > 0 %}
+            cat::[{% for cat in post.categories %}<a href="/blog/cat/{{ cat }}">{{ cat }}</a>{% unless forloop.last %},{% endunless %}{% endfor %}]
+        {% else %}
+            cat::none
+        {% endif %}
+    </span>
+</span>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="post-nav">
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">&lt;- Older</a>
+    {% endif %}
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer -&gt;</a>
+    {% endif %}
+</div>
+{% endif %}
