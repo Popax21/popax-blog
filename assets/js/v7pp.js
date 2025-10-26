@@ -351,7 +351,7 @@ async function tracers() {
     let ts = [];
     let nst = 0;
 
-    let mtl = Math.max(window.innerWidth, window.innerHeight) * 1.2;
+    let mtl = Math.max(window.innerWidth, window.innerHeight);
 
     let p = 0;
     for await (t of frames()) {
@@ -371,7 +371,13 @@ async function tracers() {
             ctx.canvas.width = window.innerWidth;
             ctx.canvas.height = window.innerHeight;
 
-            for (let t of ts) t.p = [[t.x, t.y]];
+            for (let t of ts) {
+                if (t.x < 24) t.x = 24;
+                if (t.y < 24) t.y = 24;
+                if (t.x > window.innerWidth - 24) t.x = window.innerWidth - 24;
+                if (t.y > window.innerHeight - 24) t.y = window.innerHeight - 24;
+                t.p = [[t.x, t.y]];
+            }
         }
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
