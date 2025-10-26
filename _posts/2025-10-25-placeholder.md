@@ -1,9 +1,17 @@
 ---
-layout: post
-title:  "Welcome to Jekyll!"
-author: Popax21
-date:   2025-10-25 03:34:46 +0200
+layout:     post
+title:      🚧🚧🚧 UNDER_CONSTRUCTION 🚧🚧🚧
+author:     Popax21
+date:       2025-10-25 03:34:46 +0200
+categories: placeholder test
 ---
+
+This is a placeholder blog post until I get some actual content ready to publish; check in again in a few days to see whether I have succeeded at this noble task. :)
+
+In the meantime, please find the standard Jekyll template blog post for your viewing pleasure down below.
+
+---
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 Jekyll requires blog post files to be named according to the following format:
