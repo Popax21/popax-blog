@@ -7,19 +7,21 @@ timezone_short: CET
 
 theme: lightspeed
 plugins:
- - jekyll-feed
- - jekyll-paginate-v2
  - jekyll-seo-tag
+ - jekyll-figure
 
 collections:
   posts:
     permalink: "/blog/:year/:month/:day/:title:output_ext"
 
 autopages:
+  enabled: true
   categories:
     title: "Posts in category :cat"
     permalink: "/blog/cat/:cat"
     silent: false
+  collections:
+    layouts: []
 
 exclude:
  - "theme"
