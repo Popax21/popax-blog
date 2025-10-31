@@ -1,0 +1,17 @@
+sass:
+  sass_dir: _sass
+  style: expanded
+
+pagination:
+  enabled: true
+  sort_field: 'date'
+  sort_reverse: true
+
+exclude:
+  - README.md
+  - COPYING
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate-v2
+

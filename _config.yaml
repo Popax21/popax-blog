@@ -16,11 +16,11 @@ collections:
     permalink: "/blog/:year/:month/:day/:title:output_ext"
 
 autopages:
-  enabled: true
   categories:
     title: "Posts in category :cat"
     permalink: "/blog/cat/:cat"
     silent: false
 
 exclude:
+ - "theme"
  - "*.nix"

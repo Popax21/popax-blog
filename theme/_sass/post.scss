@@ -1,0 +1,39 @@
+.post-info {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.post-content {
+  line-height: 1.8em;
+  padding-bottom: 2em;
+}
+
+.post-content h1, h3, code, pre {
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+.post-content h2 {
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
+
+.post-content hr {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+figure {
+  padding-top: 3em;
+  padding-bottom: 3em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+figure figcaption {
+  margin-top: 0.4em;
+  font-style: italic;
+  font-size: 90%;
+}

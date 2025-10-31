@@ -204,10 +204,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "128bp3mihh175l9wm7hgg9sdisp6hd3kf36fw01iksqnq7kv5hdi";
+      sha256 = "09zss44bw5sx8c619qy1ci611r1h5nfd1biyjnpxrl6jcvcy2s0h";
       type = "gem";
     };
-    version = "2.15.1";
+    version = "2.15.2";
   };
   kramdown = {
     dependencies = ["rexml"];
@@ -232,14 +232,12 @@
     version = "1.1.0";
   };
   lightspeed = {
+    dependencies = ["jekyll" "jekyll-feed" "jekyll-paginate-v2"];
     groups = ["default"];
     platforms = [];
     source = {
-      fetchSubmodules = false;
-      rev = "d1aef2c573e4cb1a7d027936f20b881eb89db919";
-      sha256 = "1qvjd4dgx9zb0qnr0ngwib8bx36mcz07hvf36hn3c9jcx593vqz0";
-      type = "git";
-      url = "https://github.com/tajacks/lightspeed.git";
+      path = ./theme;
+      type = "path";
     };
     version = "1.0.0";
   };
@@ -300,10 +298,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "14s4jdcs1a4saam9qmzbsa2bsh85rj9zfxny5z315x3gg0nhkxcn";
+      sha256 = "175iisqb211n0qbfyqd8jz2g01q6xj038zjf4q0nm8k6kz88k7lc";
       type = "gem";
     };
-    version = "13.3.0";
+    version = "13.3.1";
   };
   rb-fsevent = {
     groups = ["default"];

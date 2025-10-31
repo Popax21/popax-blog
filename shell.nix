@@ -6,11 +6,7 @@ in
       (pkgs.bundlerEnv {
         name = "popax-blog-jekyll";
         gemdir = ./.;
-        gemConfig = pkgs.defaultGemConfig // {
-          lightspeed = attrs: {
-            postFixup = "rm $out/nix-support/gem-meta/spec";
-          };
-        };
+        extraConfigPaths = ["${pkgs.runCommandNoCCLocal "theme-symlink" {} "mkdir -p $out && ln -s ${toString ./theme} $out/theme"}/theme"];
       })
       (pkgs.writeShellApplication {
         name = "update-gems";
