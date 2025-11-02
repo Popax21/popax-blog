@@ -7,9 +7,6 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
-jekyll-figure:
-  paragraphs: false
-
 exclude:
   - README.md
   - COPYING

@@ -8,14 +8,32 @@
   padding-bottom: 2em;
 }
 
-.post-content h1, h3, code, pre {
+.post-content>* {
+  margin-bottom: 1.5em;
+}
+
+.post-content> :is(h1, h3, code, pre) {
+  margin-bottom: 0;
   padding-bottom: 1em;
   padding-top: 1em;
 }
 
 .post-content h2 {
+  margin-bottom: 0;
   padding-bottom: 2em;
   padding-top: 2em;
+}
+
+.post-content strong {
+  font-weight: bold;
+}
+
+.post-content li {
+  margin-bottom: 1em;
+}
+
+.post-content li>* {
+  margin-bottom: 0.5em;
 }
 
 .post-content hr {
@@ -23,26 +41,58 @@
   margin-top: 2em;
 }
 
-figure {
-  width: 85%;
+.post-content blockquote {
+  margin-left: 1.5em;
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+
+  color: #aaa;
+  border-left: 3px solid #ccc;
+}
+
+.post-content blockquote>* {
+  margin-bottom: 1.5em;
+}
+
+.post-content blockquote strong {
+  color: #ccc;
+}
+
+.post-content blockquote li {
+  margin-bottom: 0.5em;
+}
+
+.post-content figure {
+  width: 90%;
   padding-top: 3em;
   padding-bottom: 3em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-figure img {
+.post-content figure>* {
   width: 100%;
+  margin-top: 0.4em;
 }
 
-figure figcaption {
+.post-content figure figcaption {
   width: 90%;
-  margin-top: 0.4em;
-
   font-style: italic;
   font-size: 90%;
+}
+
+.post-content figure img {
+  width: 100%;
+  max-height: 80em;
+  object-fit: contain;
+}
+
+.post-content figure.small img {
+  max-height: 40em;
 }

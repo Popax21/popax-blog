@@ -14,6 +14,9 @@ collections:
   posts:
     permalink: "/blog/:year/:month/:day/:title:output_ext"
 
+# we use prism.js for highlighting 
+highlighter: none
+
 autopages:
   enabled: true
   categories:

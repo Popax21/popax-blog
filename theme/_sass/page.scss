@@ -1,23 +1,21 @@
 /* Style inspiration and settings adapted from https://github.com/jgthms/web-design-in-4-minutes*/
 
-/* Base */
 html {
   font-size: 12pt;
 }
-
-/* 01 Font family */
 
 body {
   font-family: "Courier New", "Helvetica", sans-serif;
 }
 
-/* 03 Spacing */
-
-
 .padded {
   padding-top: 30px;
   padding-bottom: 30px;
   line-height: 30px;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .main-content {
@@ -26,16 +24,10 @@ body {
   line-height: 30px;
 }
 
-div.main-content h2 {
+.main-content h2 {
   padding-top: 15px;
   padding-bottom: 5px;
 }
-
-header h1, h5 {
-  display: inline;
-}
-
-/* 04 Color and contrast */
 
 body {
   color: #c5ccce;
@@ -45,30 +37,35 @@ body {
 h1,
 h2,
 strong {
+  font-weight: 500;
   color: #dcdede;
 }
-
-header h5 {
-  font-weight: lighter;
-}
-
-/* 05 Balance */
-
-code {
-  padding: 2px 4px;
-  vertical-align: text-bottom;
-}
-
-/* 06 Primary color */
 
 a {
   color: #7e92a2;
 }
 
-/* 07 Secondary colors */
+h1>a {
+  color: inherit;
+  text-decoration: inherit;
+}
 
-h1,
-h2,
-strong {
-  font-weight: 500;
+h1:hover>a::after {
+  content: " #";
+  color: #7e92a2;
+}
+
+details>summary {
+  cursor: pointer;
+}
+
+pre {
+  padding: 1em;
+  overflow: scroll;
+  background: #282828;
+}
+
+:not(:is(pre))>code {
+  background: #282828;
+  padding: 2px 4px;
 }

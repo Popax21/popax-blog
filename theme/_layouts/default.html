@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% include head.html %}
+
+    <script>
+        setTimeout(() => [...document.getElementsByTagName("h1")].forEach(h => {
+            let l = document.createElement("a");
+            l.href = `#${h.id}`;
+            l.append(...h.childNodes);
+            h.replaceChildren(l);
+        }), 0);
+    </script>
 </head>
 
 <body>
@@ -12,7 +22,7 @@
 
         <main class="wrapper-main">
             <div class="main-content">
-            {{ content }}
+                {{ content }}
             </div>
         </main>
     </div>
@@ -21,4 +31,5 @@
         {% include footer.html %}
     </footer>
 </body>
+
 </html>
