@@ -49,9 +49,10 @@ something was different - I decided to keep going after the CTF. Maybe it was
 motivated by having the excuse that the sponsor writeup competition was still
 ongoing, maybe it was motivated by not wanting to let yet another Windows kernel
 challenge get the better of me; the exact reason is irrelevant, what matters is
-that I did. And after another week of working on the challenge on-and-off, I did
-it. I succeeded. I solved the challenge. This writeup will take you on a guided
-tour through my journey of getting there, and maybe you can even take home some
+that I did. And after another week of working on the challenge on-and-off, we
+did it. We had finally been successful. Me and Georg had solved the challenge.
+This writeup will take you on a guided tour how I, with a lot of support from
+Georg, got there in the end; and who knows, maybe you can even take home some
 Windows kernel pwn knowledge for yourself along the way.
 
 # Initial foothold
@@ -832,6 +833,11 @@ concurrency of the exploit - yaaaayyy! I swapped out all my calls to
 So yeah, that was a fun lesson to learn... and that's one mistake I'll
 definitely never make again in the future! ^~^
 
+Even now I still don't know how on earth this mistake was even been able to
+diminish the effectiveness of the heap spray. Using our new method of triggering
+the vulnerability, we should have had as much time to spray objects as we needed
+after all... oh well...
+
 Either way, time to piece my motivation back together, and to get back to
 solving the actual challenge... 
 
@@ -956,12 +962,17 @@ so let's take a look at what that allows us to do:
 Phew! That's a lot of code! However, we can spot some linked list unlink
 operations - these pretty much give us an arbitrary write primitive (with some
 restrictions). Right now that doesn't help us much tho; we first need to figure
-out where to write to, i.e. we need to leak some kernel object's address.
+out where to write to, i.e. we need to leak some kernel object's address. Georg
+had in the mean time developed a POC which could leak the NT kernel's base
+address using an EntryBleed/prefetch sidechannel, which we could have used to
+defeat KASLR without a leak, but I really really didn't want to end up having to
+rely on a flaky sidechannel for that either...
 
-We also don't need to deal with all of this complexity either if we don't want
-to - we can change our fake view's `ResourceType` field (found in the `BLOB`
-struct preceding the `KALPC_VIEW` struct) to invoke a bunch of other
-ALPC-related destructor functions instead. Sadly none of these destructors
+Oh and as a quick side note: turns out we also don't need to deal with all of
+this complexity in the destructor if we don't want to either; we can change our
+fake view's `ResourceType` field (found in the `BLOB` struct preceding the
+`KALPC_VIEW` struct) to invoke a bunch of other ALPC-related destructor
+functions instead of `AlpcViewDestroyProcedure`. Sadly none of these destructors
 contain any exploitable logic not seen within the view destructor, but they are
 at least easier to survive with a fake ALPC object.
 
