@@ -351,18 +351,21 @@ async function tracers() {
     let ts = [];
     let nst = 0;
 
-    let mtl = Math.max(window.innerWidth, window.innerHeight);
+    let mtl = Math.max(window.innerWidth, window.innerHeight) * 0.7;
 
     let p = 0;
     for await (t of frames()) {
-        let dt = t - p;
+        let dt = Math.min(t - p, 1 / 30);
         p = t;
 
+        if (window.innerWidth <= 3 * 24 || window.innerHeight <= 3 * 24) continue;
+
         if (ts.length < 4 && nst <= t) {
+            let x = window.innerWidth * (0.45 + 0.1 * Math.random()), y = window.innerHeight * (0.45 + 0.1 * Math.random());
             ts.push({
-                x: window.innerWidth / 2, y: window.innerHeight / 2,
+                x, y,
                 vx: Math.random() > 0.5 ? +1 : -1, vy: Math.random() > 0.5 ? +1 : -1,
-                p: [[window.innerWidth / 2, window.innerHeight / 2]]
+                p: [[x, y]]
             });
             nst = t + 10 + Math.random() * 15;
         }
